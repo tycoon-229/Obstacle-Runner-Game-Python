@@ -37,6 +37,9 @@ player_img = pygame.transform.scale(player_img, (70, 90))
 obstacle_img = pygame.image.load("obstacle.png")
 obstacle_img = pygame.transform.scale(obstacle_img, (70, 90))
 
+heart_img = pygame.image.load("heart.png")
+heart_img = pygame.transform.scale(heart_img, (35, 35))
+
 # =========================
 # FONT
 # =========================
@@ -366,7 +369,12 @@ def game_loop():
 
         screen.blit(score_text, (20, 20))
         screen.blit(speed_text, (20, 60))
-        screen.blit(hp_text, (screen_width - 120, 20)) # Góc trên cùng bên phải
+        
+        for i in range(player.hp):
+            # Tính toán tọa độ X để xếp các trái tim thành hàng ngang ở góc phải
+            heart_x = (screen_width - 150) + (i * 40)
+            heart_y = 20
+            screen.blit(heart_img, (heart_x, heart_y))
 
         pygame.display.update()
         clock.tick(60)
