@@ -45,7 +45,7 @@ Chuẩn bị tài nguyên (Assets): Đảm bảo bạn đã có sẵn các tệp
 
 Mở Terminal tại thư mục chứa dự án và chạy lệnh:
 
-python ten\_file\_cua\_ban.py
+python pythonPass.py
 
 
 🎮 Hướng dẫn điều khiển
