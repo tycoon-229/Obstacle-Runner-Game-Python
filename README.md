@@ -31,7 +31,6 @@ Một tựa game 2D sinh tồn nhịp độ nhanh được xây dựng bằng Py
 
 Đảm bảo bạn đã cài đặt Python trên máy tính. Cài đặt thư viện Pygame thông qua Terminal hoặc Command Prompt:
 
-Bash
 pip install pygame
 
 
@@ -46,7 +45,6 @@ Chuẩn bị tài nguyên (Assets): Đảm bảo bạn đã có sẵn các tệp
 
 Mở Terminal tại thư mục chứa dự án và chạy lệnh:
 
-Bash
 python ten\_file\_cua\_ban.py
 
 
