@@ -1,71 +1,97 @@
-###### 🏃‍♂️ Obstacle Runner
+# 🏃‍♂️ Obstacle Runner
 
+**Obstacle Runner** là một tựa game 2D sinh tồn được phát triển bằng **Python** và thư viện **Pygame**.
 
-Một tựa game 2D sinh tồn nhịp độ nhanh được xây dựng bằng Python và thư viện Pygame. Người chơi sẽ điều khiển nhân vật né tránh các chướng ngại vật rơi từ trên xuống, thu thập vật phẩm hồi máu và cố gắng đạt điểm số cao nhất khi tốc độ game ngày càng tăng.
-
-
-
-###### ✨ Tính năng nổi bật
-
-
-
-* Hệ thống Menu hoàn chỉnh: Bao gồm Menu chính, Chọn độ khó, Tạm dừng (Pause) và Màn hình thua cuộc (Game Over).
-* 3 Mức độ khó: Dễ (Easy), Trung bình (Medium) và Khó (Hard) ảnh hưởng trực tiếp đến tốc độ rơi ban đầu của chướng ngại vật.
-* Hệ thống Sinh lực (HP) \& Tàng hình (I-frames): Người chơi có tối đa 3 HP. Khi trúng đòn, nhân vật sẽ nhấp nháy và tiến vào trạng thái "bất tử tạm thời" trong 1.5 giây để tránh bị nhận sát thương liên tục.
-* Vật phẩm hỗ trợ (Power-ups): Sẽ có xác suất xuất hiện vật phẩm màu xanh lá rơi xuống giúp hồi 1 HP và thưởng thêm điểm.
-* Độ khó tăng dần (Scaling difficulty): Cứ mỗi 50 điểm, chướng ngại vật sẽ rơi xuống nhanh hơn, đòi hỏi phản xạ nhạy bén hơn.
-
-
-
-🛠 Yêu cầu hệ thống
+Người chơi điều khiển nhân vật di chuyển sang trái hoặc phải để né tránh các chướng ngại vật rơi từ phía trên màn hình. Trong quá trình chơi, người chơi có thể thu thập các vật phẩm hồi máu, đồng thời phải thích nghi với tốc độ chướng ngại vật ngày càng tăng để đạt được điểm số cao nhất.
 
 ---
 
-* Python 3.x
-* Thư viện pygame
+## ✨ Tính năng nổi bật
 
+### 🎮 Hệ thống Menu
 
+Game được xây dựng với hệ thống giao diện gồm nhiều màn hình:
 
-###### 🚀 Hướng dẫn cài đặt và Chạy game
+- **Main Menu** – Menu chính để bắt đầu game.
+- **Difficulty Menu** – Lựa chọn mức độ khó.
+- **Pause Menu** – Tạm dừng và tiếp tục trò chơi.
+- **Game Over Screen** – Hiển thị kết quả khi người chơi thua.
+- **Restart** – Cho phép bắt đầu lại một ván chơi.
+- **Return to Menu** – Quay lại menu chính.
 
-
-Đảm bảo bạn đã cài đặt Python trên máy tính. Cài đặt thư viện Pygame thông qua Terminal hoặc Command Prompt:
-
-pip install pygame
-
-
-Chuẩn bị tài nguyên (Assets): Đảm bảo bạn đã có sẵn các tệp hình ảnh sau nằm cùng một thư mục với file code. (Lưu ý: Game sẽ tự động scale lại kích thước, nhưng bạn nên chọn ảnh phù hợp):
-
-* background.png (Hình nền)
-* player.png (Nhân vật)
-* obstacle.png (Chướng ngại vật)
-* heart.png (Biểu tượng mạng/máu)
-
-
-
-Mở Terminal tại thư mục chứa dự án và chạy lệnh:
-
-python pythonPass.py
-
-
-🎮 Hướng dẫn điều khiển
 ---
 
+### 🎯 3 mức độ khó
 
+Game cung cấp 3 mức độ khó:
 
-Trong Menu \& Giao diện:
+| Mức độ | Mô tả |
+|---|---|
+| 🟢 Easy | Tốc độ chướng ngại vật ban đầu thấp |
+| 🟡 Medium | Tốc độ chướng ngại vật ban đầu ở mức trung bình |
+| 🔴 Hard | Tốc độ chướng ngại vật ban đầu cao |
 
-* Phím SPACE: Bắt đầu game (từ Menu chính)
-* Phím 1 / 2 / 3: Chọn mức độ khó tương ứng
-* Phím P: Tạm dừng (Pause) / Tiếp tục chơi
-* Phím R: Chơi lại ván mới (tại màn hình Game Over)
-* Phím M: Quay về Menu chính (tại màn hình Game Over)
-* Phím Q: Thoát game an toàn
+Mức độ khó được lựa chọn trước khi bắt đầu game và ảnh hưởng trực tiếp đến tốc độ rơi ban đầu của chướng ngại vật.
 
+---
 
+### ❤️ Hệ thống sinh lực (HP)
 
-Trong lúc chơi:
+Người chơi có tối đa **3 HP**.
 
-* Mũi tên Trái (⬅️): Di chuyển nhân vật sang trái
-* Mũi tên Phải (➡️): Di chuyển nhân vật sang phải
+Khi nhân vật va chạm với chướng ngại vật:
 
+- HP bị giảm.
+- Nhân vật chuyển sang trạng thái **I-frames** (Invincibility Frames).
+- Trong thời gian này, nhân vật tạm thời không nhận thêm sát thương.
+- Nhân vật có hiệu ứng nhấp nháy để biểu thị trạng thái bất tử tạm thời.
+- Thời gian I-frames là **1.5 giây**.
+
+Cơ chế này giúp tránh việc người chơi bị mất toàn bộ HP liên tục khi đứng quá gần một chướng ngại vật.
+
+---
+
+### 💚 Power-ups
+
+Trong quá trình chơi có xác suất xuất hiện các vật phẩm hỗ trợ.
+
+Power-up có màu xanh lá và rơi từ phía trên màn hình xuống.
+
+Khi người chơi thu thập Power-up:
+
+- Hồi lại **1 HP**.
+- Được cộng thêm điểm.
+- HP không vượt quá giới hạn tối đa.
+
+---
+
+### 📈 Độ khó tăng dần
+
+Tốc độ của chướng ngại vật sẽ tăng theo điểm số.
+
+Cứ mỗi **50 điểm**, tốc độ rơi của chướng ngại vật được tăng lên.
+
+Điều này khiến game ngày càng khó khi người chơi đạt điểm cao, yêu cầu khả năng phản xạ và điều khiển tốt hơn.
+
+---
+
+## 🕹️ Gameplay
+
+Gameplay chính của Obstacle Runner:
+
+```text
+                    ↓
+              🟥 Obstacle
+                    ↓
+                    ↓
+              🟥 Obstacle
+                    ↓
+
+        ←   🧍 Player   →
+
+              🟩 Power-up
+                    ↓
+
+────────────────────────────
+        Khu vực di chuyển
+────────────────────────────
